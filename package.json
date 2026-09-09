@@ -1,0 +1,10 @@
+{
+  "name": "evidence-kit",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A tiny primitive for evidence-graded claims: fact / user-confirmed / inferred / hypothesis, with confidence + citations, plus a framework-agnostic renderer.",
+  "main": "src/claim.js",
+  "scripts": { "test": "node --test" },
+  "license": "MIT",
+  "keywords": ["evidence", "provenance", "confidence", "llm", "grounding", "decision-support"]
+}

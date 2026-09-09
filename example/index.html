@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence-Kit demo</title>
+<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 16px;color:#1a2230}h1{font-size:20px}</style>
+</head><body>
+<h1>Evidence-Kit — graded claims</h1>
+<p>Each claim shows its <b>basis</b>, confidence, and sources — and invites correction. (ES modules: serve with <code>python3 -m http.server</code>, not file://.)</p>
+<div id="app"></div>
+<script type="module">
+  import { createClaim } from '../src/claim.js';
+  import { renderClaim, EK_STYLES } from '../src/render.js';
+  const style = document.createElement('style'); style.textContent = EK_STYLES; document.head.appendChild(style);
+  const claims = [
+    createClaim({ value: 'You likely qualify for the GST/HST credit.', basis: 'inferred', confidence: 0.82,
+      sources: [{ label: 'CRA — GST/HST credit eligibility', url: 'https://www.canada.ca/en/revenue-agency.html' }],
+      note: 'Based on the income and residency you entered.' }),
+    createClaim({ value: 'Your reported 2024 income is $41,000.', basis: 'user-confirmed', confidence: 1 }),
+    createClaim({ value: 'This position looks oversold and may rebound.', basis: 'hypothesis', confidence: 0.35,
+      note: 'Signal only — not financial advice.' })
+  ];
+  document.getElementById('app').innerHTML = claims.map(c => renderClaim(c)).join('');
+</script>
+</body></html>
